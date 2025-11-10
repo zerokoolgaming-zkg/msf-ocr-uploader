@@ -1,5 +1,5 @@
 // 1) Set your Apps Script Web App URL here after deploying apps_script_code.gs
-const backendUrl = ""; // e.g., "https://script.google.com/macros/s/AKfycb.../exec"
+const backendUrl = ""; // e.g., "https://script.google.com/macros/s/AKfycbyctl3nWmtmfz7Q296SSJpeVPKCEnO-Ya_JSxMXOnBngv2zfly2I9rQ0occK8HKF_c0/exec"
 
 // 2) Portrait recognition config
 // If you commit /portraits plus /portraits/manifest.json, the site will load them automatically.
