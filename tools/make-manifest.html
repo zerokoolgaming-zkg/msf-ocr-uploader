@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Portrait Manifest Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:#0b1420;color:#e7eef9;margin:0;padding:24px}
+    h1{color:#ff9c1a}
+    .box{border:1px dashed #29405f;border-radius:12px;padding:12px;margin:12px 0;background:#0f1c2b}
+    label{display:inline-block;padding:10px 14px;background:#122033;border:1px solid #29405f;border-radius:12px;color:#e7eef9;cursor:pointer}
+    input[type=file]{display:none}
+    pre{white-space:pre-wrap;background:#0b1420;padding:12px;border-radius:12px}
+    a.btn{display:inline-block;padding:10px 14px;border:1px solid #29405f;border-radius:12px;background:#163251;color:#e7eef9;text-decoration:none}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+  <h1>Portrait Manifest Builder</h1>
+  <p>Use this to generate <code>/portraits/manifest.json</code>. Either select a folder (drag into your repo) or import a ZIP and then download the manifest.</p>
+  <div class="box">
+    <label><input id="zip" type="file" accept=".zip" />Import portrait ZIP</label>
+    <div id="out" style="margin-top:10px"></div>
+  </div>
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('zip').addEventListener('change', async (e)=>{
+      const file = e.target.files?.[0]; if(!file) return;
+      out.textContent = 'Reading ZIP…';
+      const zip = await JSZip.loadAsync(file);
+      const list = [];
+      zip.forEach((path, entry)=>{
+        if (!entry.dir && /\.(png|jpg|jpeg)$/i.test(path)){
+          const name = path.split('/').pop().replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').trim();
+          list.push({ name, url: 'portraits/'+path.split('/').pop() });
+        }
+      });
+      const json = JSON.stringify(list, null, 2);
+      out.innerHTML = '<p>Found '+list.length+' images. Click to download manifest.json and place it beside your portrait files in <code>/portraits</code>.</p>' +
+        '<pre>'+json.replace(/[&<>]/g, s=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[s]))+'</pre>' +
+        '<p><a class="btn" id="dl" href="#">Download manifest.json</a></p>';
+      document.getElementById('dl').addEventListener('click', ()=>{
+        const blob = new Blob([json], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'manifest.json'; a.click();
+        URL.revokeObjectURL(url);
+      });
+    });
+  </script>
+</body>
+</html>

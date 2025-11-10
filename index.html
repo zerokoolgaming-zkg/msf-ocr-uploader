@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MSF Screenshot → Sheet Uploader (with Portrait Recognition)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script defer src="config.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>MSF Screenshot → Sheet Uploader</h1>
+    <p>Now with <strong>portrait → character name recognition</strong>. Upload screenshots; OCR reads TCP/VP; portrait matcher fills character names.</p>
+  </header>
+
+  <main>
+    <section class="uploader">
+      <label class="file-label">
+        <input id="fileInput" type="file" accept="image/*" multiple />
+        <span>Select screenshots</span>
+      </label>
+      <div class="small">Optional: <a href="tools/make-manifest.html" target="_blank">build a manifest.json</a> for your portraits folder.</div>
+      <div class="small">Or import a portrait ZIP (reads in-browser; not uploaded anywhere):</div>
+      <label class="file-label">
+        <input id="zipInput" type="file" accept=".zip" />
+        <span>Import portrait ZIP</span>
+      </label>
+      <div id="progress" class="progress"></div>
+    </section>
+
+    <section>
+      <div class="controls">
+        <label>Season:
+          <input id="defaultSeason" type="text" placeholder="e.g., 1" />
+        </label>
+        <label>Room:
+          <input id="defaultRoom" type="text" placeholder="e.g., 1" />
+        </label>
+        <button id="pushAll" class="btn" disabled>Push all to Google Sheet</button>
+      </div>
+    </section>
+
+    <section class="notice" id="portraitNotice"></section>
+
+    <section id="cards" class="cards"></section>
+  </main>
+
+  <footer>
+    <p>Tip: Use the cog icon in each card to fine-tune portrait crop if auto-crop misses.</p>
+  </footer>
+</body>
+</html>

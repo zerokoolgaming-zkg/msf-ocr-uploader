@@ -1,0 +1,29 @@
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:#0b1420;color:#e7eef9;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+header{padding:24px 16px;border-bottom:1px solid #1b2a3b;background:#0f1826}
+h1{margin:0 0 8px;font-weight:800;letter-spacing:.3px;color:#ff9c1a;text-shadow:0 2px 0 #1a0900}
+p{margin:0 0 12px;color:#cbd5e1}
+main{padding:16px;max-width:1100px;margin:0 auto}
+.file-label{display:inline-block;padding:10px 14px;background:#122033;border:1px solid #29405f;border-radius:12px;color:#e7eef9;cursor:pointer;margin-right:6px}
+.file-label input{display:none}
+.progress{margin-top:8px;min-height:18px;color:#a3d3ff}
+.controls{display:flex;gap:12px;align-items:center;margin:12px 0 20px;flex-wrap:wrap}
+.controls input{padding:8px 10px;border:1px solid #29405f;border-radius:12px;background:#0b1420;color:#e7eef9;min-width:120px}
+.btn{padding:10px 14px;border:1px solid #29405f;border-radius:12px;background:#163251;color:#e7eef9;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:#0f1826;border:1px solid #1b2a3b;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.25);overflow:hidden}
+.card header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#122033;border-bottom:1px solid #1b2a3b}
+.card .content{padding:12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.row label{font-size:12px;color:#94a3b8}
+.row input, .row select{width:100%;padding:8px 10px;border:1px solid #29405f;border-radius:10px;background:#0b1420;color:#e7eef9}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.grid5 input{width:100%;}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;margin-left:6px}
+.badge.up{background:#3b0b0b;color:#ffb3b3;border:1px solid #6c1b1b}
+.badge.down{background:#0b2b13;color:#b2f5c6;border:1px solid #1b5e2e}
+.kv{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.kv div{padding:4px 8px;border:1px dashed #29405f;border-radius:10px}
+.small{font-size:12px;color:#9fb3c8}
+.notice{padding:10px 12px;border:1px dashed #29405f;border-radius:12px;margin:12px 0;color:#c8e1ff;background:#0f1c2b}
+.iconbtn{background:transparent;border:1px solid #29405f;border-radius:10px;color:#e7eef9;padding:8px 10px;cursor:pointer}
