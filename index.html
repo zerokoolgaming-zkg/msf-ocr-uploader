@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MSF Screenshot → Sheet Uploader (Auto)</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>⚔️ MSF Screenshot Transcriber (OCR)</title>
+  <link rel="stylesheet" href="style.css">
   <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script defer src="config.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <h1>MSF Screenshot → Sheet Uploader</h1>
-    <p>Drop screenshots — OCR, portrait recognition, and Sheet sync happen automatically.</p>
+    <h1>⚔️ MSF Screenshot Transcriber (OCR)</h1>
   </header>
   <main>
-    <section class="uploader">
-      <label class="file-label">
-        <input id="fileInput" type="file" accept="image/*" multiple />
-        <span>Select screenshots</span>
+    <div class="controls">
+      <input id="backendUrl" placeholder="Apps Script /exec URL" />
+      <button id="saveUrl">Save URL</button>
+    </div>
+    <div class="uploader">
+      <label class="filebtn">
+        <input id="files" type="file" accept="image/*" multiple />
+        Choose Files
       </label>
-      <div id="progress" class="progress"></div>
-    </section>
-    <section class="controls">
-      <label>Season: <input id="defaultSeason" type="text" placeholder="e.g., 1" /></label>
-      <label>Room: <input id="defaultRoom" type="text" placeholder="e.g., 1" /></label>
-    </section>
-    <section id="cards" class="cards"></section>
+      <span id="status" class="status"></span>
+    </div>
+    <textarea id="log" class="log" spellcheck="false" placeholder="Transcribed rows will appear here (TSV)…"></textarea>
   </main>
 </body>
 </html>
